@@ -1,5 +1,6 @@
 package main.java.net.eitan;
 
+import org.w3c.dom.Text;
 import processing.core.*;
 import processing.net.Client;
 import processing.net.Server;
@@ -30,6 +31,7 @@ public class ProcessingServer extends PApplet {
     public void setup() {
         fill(0);
         server = new Server(this, 3000);
+        Textfield textfield = new addTextfield(this, "Username");
     }
 
     @Override
