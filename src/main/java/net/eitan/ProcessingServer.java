@@ -1,27 +1,21 @@
 package main.java.net.eitan;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+
+import controlP5.*;
+import main.java.net.eitan.util.User;
 import processing.core.*;
 import processing.net.Client;
 import processing.net.Server;
-import main.java.net.eitan.components.*;
-import controlP5.*;
-
-import java.awt.Font;
 
 public class ProcessingServer extends PApplet {
 
     public int screenWidth = 700;
     public int screenHeight = 500;
 
-    ControlP5 cp5;
+    public static ArrayList<User> users = new ArrayList<>();
 
     Server server;
-    StartButton button = new StartButton(screenWidth/2, screenHeight/2, 200, 75, this, new int[]{255, 255, 255}, "START GAME", new int[]{255, 0, 0}, 30, 15);
-
-    private boolean inMenu = true;
-
-    boolean truncateText = false;
 
     public static void main(String[] args) {
         PApplet.main("main.java.net.eitan.ProcessingServer");
@@ -31,7 +25,6 @@ public class ProcessingServer extends PApplet {
     public void setup() {
         fill(0);
         server = new Server(this, 3000);
-        Textfield textfield = new addTextfield(this, "Username");
     }
 
     @Override
@@ -42,15 +35,43 @@ public class ProcessingServer extends PApplet {
     @Override
     public void draw() {
         background(0);
-        if (inMenu) {
-            button.draw();
-        }
         Client client = server.available();
         if (client != null) {
             String incoming = client.readString();
-            println(incoming);
+            if (incoming.split(": ").length > 1 && incoming.split(": ")[1] != null) {
+                String username = incoming.split(": ")[1];
+                users.add(new User(username, 0));
+                String userList = "";
+                for (User user: users) {
+                    if (users.get(users.size()-1) == user) {
+                        userList = userList + user.username;
+                    } else {
+                        userList = userList + user.username+",";
+                    }
+                }
+                println(userList);
+                server.write(userList);
+            } else if (incoming.split("- ").length > 1 && incoming.split("- ")[1] != null && incoming.split("- ")[1].equals("disconnect")) {
+                String name = incoming.split("- ")[0];
+                for (User user: users) {
+                    User checkuser = user.getUser(name);
+                    if (checkuser != null) {
+                        users.remove(checkuser);
+                        break;
+                    }
+                }
+                String userList = "";
+                for (User user2: users) {
+                    if (users.get(users.size()-1).equals(user2)) {
+                        userList = userList + user2.username;
+                    } else {
+                        userList = userList + user2.username+",";
+                    }
+                }
+                println(userList);
+                server.write(userList);
+            }
         }
-        
     }
 
     @Override
