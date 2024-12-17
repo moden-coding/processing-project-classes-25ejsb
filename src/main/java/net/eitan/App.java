@@ -6,17 +6,20 @@ import processing.net.Client;
 import java.awt.Font;
 
 import main.java.net.eitan.component.PlayerList;
+import main.java.net.eitan.component.GameScreen;
 import main.java.net.eitan.component.Menu;
 import main.java.net.eitan.util.*;
 
 public class App extends PApplet {
     public static Client client;
-    public static boolean inMenu = true;
-    private final int windowX = 1000;
-    private final int windowY = 700;
+    boolean inMenu = true;
+    public static final int windowX = 1000;
+    public static final int windowY = 700;
     private String username;
 
     public static ControlP5 controlP5;
+
+    GameScreen gameScreen = new GameScreen();
 
     public static void main(String[] args) {
         PApplet.main("main.java.net.eitan.App");
@@ -52,11 +55,24 @@ public class App extends PApplet {
     @Override
     public void draw() {
         if (client.available() > 0) {
-            if (PlayerList.userList != null) {
-                PlayerList.clearList(this);
+            String message = client.readString();
+            if (message != null && message.split("= ").length > 0 && message.split("= ")[0].equals("Users")) {
+                if (PlayerList.userList != null) {
+                    PlayerList.clearList(this);
+                }
+
+                if (message.split("= ")[1].equals(username)) {
+                    gameScreen.loadingScreen(this);
+                    inMenu = false;
+                }
+                if (!inMenu) {
+                    PlayerList.drawGameScreen(this, message.split("= ")[2]);
+                }
             }
-            PlayerList.drawGameScreen(this, client.readString());
-        } 
+            if (message.equals("ServerStart")) {
+                gameScreen.hide(this);
+            }
+        }
         background(255);
     }
 
