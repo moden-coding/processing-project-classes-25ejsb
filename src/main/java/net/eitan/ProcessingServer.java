@@ -13,13 +13,17 @@ public class ProcessingServer extends PApplet {
 
     public int screenWidth = 700;
     public int screenHeight = 500;
+    boolean playingGame = false;
 
     public ArrayList<User> users = new ArrayList<>();
+    public ArrayList<String> answers = new ArrayList<>();
 
     Server server;
     public static ControlP5 controlP5;
     public int inGame;
     int minPlayers = 2;
+
+    String topic;
 
     public static void main(String[] args) {
         PApplet.main("main.java.net.eitan.ProcessingServer");
@@ -28,6 +32,8 @@ public class ProcessingServer extends PApplet {
     Button startButton;
     Textlabel playersInServer;
     Textlabel minPlayersLabel;
+
+    User currentJudge;
 
     @Override
     public void setup() {
@@ -70,6 +76,7 @@ public class ProcessingServer extends PApplet {
                 if (users.size() >= minPlayers) {
                     server.write("ServerStart");
                     startButton.hide();
+                    playingGame = true;
                 }
             }
         }
@@ -82,7 +89,7 @@ public class ProcessingServer extends PApplet {
         Client client = server.available();
         if (client != null) {
             String incoming = client.readString();
-            if (incoming.split(": ").length > 1 && incoming.split(": ")[1] != null) {
+            if (incoming.split(": ").length == 2 && incoming.split(": ")[1] != null) {
                 String username = incoming.split(": ")[1];
                 users.add(new User(username, 0));
                 String userList = "";
@@ -115,6 +122,39 @@ public class ProcessingServer extends PApplet {
                 println(userList);
                 server.write("Users= " + name + "= " + userList);
             }
+            if (incoming != null && incoming.split(", ").length > 2 && incoming.split(", ")[0].equals("Answer")) {
+                delay(10);
+                answers.add(incoming.split(", ")[2]);
+                String answerList = "";
+                String username = incoming.split(", ")[1];
+                for (String answer: answers) {
+                    if (answers.get(answers.size()-1).equals(answer)) {
+                        answerList = answerList + answer;
+                    } else {
+                        answerList = answerList + answer + ",";
+                    }
+                }
+                if (answers.size() == users.size()-1) {
+                    server.write("Responses- " + answerList);
+                }
+                server.write("Answers: " + username + ": " + answerList);
+            }
+            if (incoming != null && incoming.split(", ").length > 2 && incoming.split(", ")[0].equals("Topic")) {
+                topic = incoming.split(", ")[2];
+                String username = incoming.split(", ")[1];
+                server.write("SubmitTopic, " + username + ", " + topic);
+            }
+        }
+        if (playingGame) {
+            gameSystem();
+        }
+    }
+
+    private void gameSystem() {
+        if (currentJudge == null) {
+            delay(100);
+            currentJudge = users.get((int) Math.floor(Math.random() * users.size()));
+            server.write("Judge, " + currentJudge.username);
         }
     }
 

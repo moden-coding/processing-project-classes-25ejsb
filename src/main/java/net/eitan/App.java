@@ -16,6 +16,7 @@ public class App extends PApplet {
     public static final int windowX = 1000;
     public static final int windowY = 700;
     private String username;
+    boolean currentlyJudge = false;
 
     public static ControlP5 controlP5;
 
@@ -31,6 +32,29 @@ public class App extends PApplet {
         if (inMenu) {
             Menu.drawMenu(this);
         }
+        gameScreen.initializeJudge(this);
+
+        gameScreen.initializeAnswerScreen(this);
+        gameScreen.hideAnswerScreen();
+
+        gameScreen.initializeTopicScreen(this);
+        gameScreen.hideTopicScreen();
+
+        gameScreen.loadingScreen(this);
+        gameScreen.hideLoadingScreen(this);
+
+        gameScreen.waitingForTopic(this);
+        gameScreen.hideWaitingForTopic(this);
+
+        gameScreen.topicLabel(this);
+        gameScreen.hideTopicLabel();
+
+        gameScreen.listOutPlayerResponses(this);
+        gameScreen.hidePlayerResponses();
+
+        gameScreen.WaitingForResponses(this);
+        gameScreen.hideWaitingForResponses();
+
         client = new Client(this, "127.0.0.1", 3000);
     }
 
@@ -47,6 +71,21 @@ public class App extends PApplet {
                     username = Menu.textField.getText();
                     inMenu = false;
                     Menu.hideMenu(this);
+                }
+            }
+            if (event.getName().equals("AnswerSubmit")) {
+                if (gameScreen.answer.getText().length() > 0 && gameScreen.answer.getText().length() < 20) {
+                    client.write("Answer, " + username + ", " + username + "> " + gameScreen.answer.getText() + "> ");
+                    gameScreen.answer.setText("");
+                    gameScreen.hideAnswerScreen();
+                }
+            }
+            if (event.getName().equals("TopicSubmit")) {
+                if (gameScreen.topic.getText().length() > 0 && gameScreen.topic.getText().length() < 30) {
+                    client.write("Topic, " + username + ", " + gameScreen.topic.getText());
+                    gameScreen.topic.setText("");
+                    gameScreen.hideTopicScreen();
+                    gameScreen.showWaitingForResponses();
                 }
             }
         }
@@ -70,7 +109,72 @@ public class App extends PApplet {
                 }
             }
             if (message.equals("ServerStart")) {
-                gameScreen.hide(this);
+                gameScreen.hideLoadingScreen(this);
+            }
+            if (message.split(", ").length > 1 && message.split(", ")[0].equals("Judge")) {
+                gameScreen.hideLoadingScreen(this);
+                gameScreen.setJudge(message.split(", ")[1], this);
+                if (message.split(", ")[1].equals(username)) {
+                    gameScreen.showTopicScreen();
+                    currentlyJudge = true;
+                } else {
+                    gameScreen.waitingForTopic(this);
+                }
+            }
+            if (message.split(", ").length > 1 && message.split(", ")[0].equals("SubmitTopic")) {
+                String topic = message.split(", ")[2];
+                String user = message.split(", ")[1];
+                if (user.equals(username)) {
+                    gameScreen.hideTopicScreen();
+                } else {
+                    gameScreen.showAnswerScreen();
+                    gameScreen.showTopicLabel(topic);
+                    gameScreen.hideWaitingForTopic(this);
+                }
+            }
+            if (message.split(": ").length > 2 && message.split(": ")[0].equals("Answers")) {
+                delay(10);
+                String[] usersSubmitted = message.split(": ")[2].split("> ");
+                boolean userDidSubmit = false;
+                int index = 0;
+                for (String theuser: usersSubmitted) {
+                    if (index%2==0) {
+                        if (theuser.equals(username)) {
+                            userDidSubmit = true;
+                        }
+                    }
+                    ++index;
+                }
+                String[] splitter = message.split("\n");
+                String newString = "";
+                int index2 = 0;
+                for (String split: splitter[0].split(": ")[2].split("> ")) {
+                    if (index2%2==0) {
+                        newString = newString + split + "> ";
+                    } else {
+                        newString = newString + split + "\n";
+                    }
+                    ++index2;
+                }
+                if (!currentlyJudge && userDidSubmit) {
+                    gameScreen.hideTopicLabel();
+                    gameScreen.showPlayerResponses(newString, this);
+                }
+            }
+            if (message.split("- ").length == 2 && message.split("- ")[0].equals("Responses")) {
+                String[] splitter = message.split("\n");
+                String newString = "";
+                int index2 = 0;
+                for (String split: splitter[0].split(": ")[2].split("> ")) {
+                    if (index2%2==0) {
+                        newString = newString + split + "> ";
+                    } else {
+                        newString = newString + split + "\n";
+                    }
+                    ++index2;
+                }
+                newString = newString.replaceAll(",", "");
+                gameScreen.generateButtons(this, newString);
             }
         }
         background(255);
