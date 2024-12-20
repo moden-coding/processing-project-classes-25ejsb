@@ -139,7 +139,7 @@ public class App extends PApplet {
             }
             if (message.split("- ").length == 2 && message.split("- ")[0].equals("Responses")) {
                 delay(100);
-                
+                gameScreen.hideWaitingForResponses();
                 //gameScreen.generateButtons(this, newString);
             }
         }
