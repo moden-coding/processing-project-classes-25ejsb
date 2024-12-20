@@ -165,6 +165,10 @@ public class GameScreen {
         playerList.hide();
     }
 
+    public void showPlayerResponses() {
+        playerList.show();
+    }
+
     public void showPlayerResponses(String responses, PApplet pApplet) {
         if (!topicLabel.isVisible()) {
             playerList.show();

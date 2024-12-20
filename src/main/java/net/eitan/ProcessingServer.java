@@ -119,7 +119,6 @@ public class ProcessingServer extends PApplet {
                         userList = userList + user2.username+",";
                     }
                 }
-                println(userList);
                 server.write("Users= " + name + "= " + userList);
             }
             if (incoming != null && incoming.split(", ").length > 2 && incoming.split(", ")[0].equals("Answer")) {
@@ -131,13 +130,14 @@ public class ProcessingServer extends PApplet {
                     if (answers.get(answers.size()-1).equals(answer)) {
                         answerList = answerList + answer;
                     } else {
-                        answerList = answerList + answer + ",";
+                        answerList = answerList + answer + "\n";
                     }
                 }
+                server.write("Answers: " + username + ": " + answerList);
+                delay(100);
                 if (answers.size() == users.size()-1) {
                     server.write("Responses- " + answerList);
                 }
-                server.write("Answers: " + username + ": " + answerList);
             }
             if (incoming != null && incoming.split(", ").length > 2 && incoming.split(", ")[0].equals("Topic")) {
                 topic = incoming.split(", ")[2];
@@ -156,10 +156,5 @@ public class ProcessingServer extends PApplet {
             currentJudge = users.get((int) Math.floor(Math.random() * users.size()));
             server.write("Judge, " + currentJudge.username);
         }
-    }
-
-    @Override
-    public void mouseClicked() {
-        server.write("Hello!");
     }
 }
