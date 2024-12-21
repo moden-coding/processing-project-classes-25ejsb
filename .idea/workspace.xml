@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dab40b80-54a3-4fdc-98e5-f11c5bf6d53e" name="Changes" comment="lol">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/components/StartButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/components/types/Button.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/component/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/component/GameScreen.java" afterDir="false" />
-    </list>
+    <list default="true" id="dab40b80-54a3-4fdc-98e5-f11c5bf6d53e" name="Changes" comment="final" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,11 +100,28 @@
       <option name="project" value="LOCAL" />
       <updated>1733943710019</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="final">
+      <option name="closed" value="true" />
+      <created>1734791587520</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734791587520</updated>
+    </task>
+    <task id="LOCAL-00003" summary="final">
+      <option name="closed" value="true" />
+      <created>1734791619640</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734791619640</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lol" />
-    <option name="LAST_COMMIT_MESSAGE" value="lol" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
 </project>
