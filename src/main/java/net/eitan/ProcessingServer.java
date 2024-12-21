@@ -37,7 +37,7 @@ public class ProcessingServer extends PApplet {
 
     @Override
     public void setup() {
-        server = new Server(this, 3000);
+        server = new Server(this,3000,"192.168.1.204");
         controlP5 = new ControlP5(this);
 
         Textlabel textlabel = controlP5.addLabel("Apples to Apples Server");

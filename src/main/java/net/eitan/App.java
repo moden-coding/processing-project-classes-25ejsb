@@ -116,6 +116,7 @@ public class App extends PApplet {
             if (message.equals("ServerStart")) {
                 gameScreen.hideWinner();
                 gameScreen.hideLoadingScreen(this);
+                currentlyJudge = false;
             }
             if (message.split(", ").length > 1 && message.split(", ")[0].equals("Judge")) {
                 gameScreen.hideLoadingScreen(this);
@@ -153,7 +154,6 @@ public class App extends PApplet {
                 gameScreen.showWinner(message.split("- ")[1]);
                 gameScreen.hideTopicLabel();
                 gameScreen.hidePlayerResponses();
-
             }
         }
         background(255);
