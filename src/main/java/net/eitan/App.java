@@ -55,6 +55,9 @@ public class App extends PApplet {
         gameScreen.WaitingForResponses(this);
         gameScreen.hideWaitingForResponses();
 
+        gameScreen.initializeWinner(this);
+        gameScreen.hideWinner();
+
         client = new Client(this, "127.0.0.1", 3000);
     }
 
@@ -140,7 +143,13 @@ public class App extends PApplet {
             if (message.split("- ").length == 2 && message.split("- ")[0].equals("Responses")) {
                 delay(100);
                 gameScreen.hideWaitingForResponses();
-                //gameScreen.generateButtons(this, newString);
+                if (currentlyJudge) {
+                    gameScreen.generateButtons(this, message.split("- ")[1]);
+                }
+            }
+            if (message.split("- ").length == 2 && message.split("- ")[0].equals("Winner")) {
+                gameScreen.showWinner(message.split("- ")[1]);
+                currentlyJudge = false;
             }
         }
         background(255);

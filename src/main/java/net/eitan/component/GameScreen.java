@@ -3,6 +3,8 @@ package main.java.net.eitan.component;
 import java.util.ArrayList;
 
 import controlP5.Button;
+import controlP5.CallbackEvent;
+import controlP5.CallbackListener;
 import controlP5.Textfield;
 import controlP5.Textlabel;
 import main.java.net.eitan.App;
@@ -18,6 +20,7 @@ public class GameScreen {
         loadingScreen = App.controlP5.addLabel("Waiting for server to load.. :D");
         loadingScreen.setPosition((App.windowX/2)-(loadingScreen.getWidth()/2)-50, (App.windowY/2)-(loadingScreen.getHeight()/2));
         loadingScreen.setColor(0);
+        loadingScreen.getCaptionLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
         loadingScreen.setFont(GetFont.getFont("Montserrat.ttf", 30, applet));
     }
 
@@ -49,8 +52,9 @@ public class GameScreen {
 
     public void initializeJudge(PApplet pApplet) {
         judge = App.controlP5.addLabel("Judge");
-        judge.setPosition(350, 100);
+        judge.setPosition(400, 100);
         judge.setColor(0);
+        judge.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
         judge.setFont(GetFont.getFont("Montserrat.ttf", 30, pApplet));
         judge.setValueLabel("");
     }
@@ -135,9 +139,9 @@ public class GameScreen {
 
     public void topicLabel(PApplet pApplet) {
         topicLabel = App.controlP5.addLabel("TopicLabel");
-        topicLabel.setPosition(345, 200);
-        topicLabel.setColor(0);
-        topicLabel.align(App.controlP5.CENTER, App.controlP5.CENTER, App.controlP5.CENTER, App.controlP5.CENTER);
+        topicLabel.setPosition(400, 200);
+        topicLabel.setColor(pApplet.color(0, 141, 0));
+        topicLabel.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
         topicLabel.setFont(GetFont.getFont("Montserrat.ttf", 30, pApplet));
     }
 
@@ -154,9 +158,11 @@ public class GameScreen {
     public void listOutPlayerResponses(PApplet pApplet) {
         
         playerList = App.controlP5.addLabel("PlayerResponses");
-        playerList.setPosition(450, 300);
+        playerList.setPosition(415, 300);
         playerList.setSize(500, 500);
         playerList.setValueLabel("");
+        playerList.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
+        playerList.align(App.controlP5.CENTER, App.controlP5.CENTER, App.controlP5.CENTER, App.controlP5.CENTER);
         playerList.setColor(0);
         playerList.setFont(GetFont.getFont("Montserrat.ttf", 30, pApplet));
     }
@@ -186,7 +192,8 @@ public class GameScreen {
     public void WaitingForResponses(PApplet pApplet) {
         
         WaitingForPlayerResponses = App.controlP5.addLabel("WaitingResponses");
-        WaitingForPlayerResponses.setPosition(450, 300);
+        WaitingForPlayerResponses.setPosition(400, 300);
+        WaitingForPlayerResponses.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
         WaitingForPlayerResponses.setSize(500, 500);
         WaitingForPlayerResponses.setValueLabel("Waiting for all responses..");
         WaitingForPlayerResponses.setColor(0);
@@ -203,7 +210,54 @@ public class GameScreen {
 
     public ArrayList<Button> responses = new ArrayList<>();
     public void generateButtons(PApplet pApplet, String answers) {
-        pApplet.println(answers);
+        int index = 0;
+        for (String answer: answers.split("\n")) {
+            Button responser = App.controlP5.addButton("Answer" + index);
+            responser.setPosition(300, 215+(55*index));
+            responser.setSize(400, 50);
+            responser.getCaptionLabel().setFont(GetFont.getFont("Montserrat.ttf", 20, pApplet));
+            responser.setLabel(answer);
+            responser.getCaptionLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
+            responses.add(responser);
+            index++;
+            responser.onClick(new CallbackListener() {
+
+                @Override
+                public void controlEvent(CallbackEvent arg0) {
+                    // TODO Auto-generated method stub
+                    deleteAllButtons();
+                    App.client.write("Winner- " + answer);
+                }
+                
+            });
+        }
         hideWaitingForResponses();
+    }
+
+    public void deleteAllButtons() {
+        for (Button button: responses) {
+            button.hide();
+        }
+        responses.removeAll(responses);
+    }
+
+    public Textlabel winner;
+    public void initializeWinner(PApplet pApplet) {
+        
+        winner = App.controlP5.addLabel("GameWinner");
+        winner.setPosition(400, 300);
+        winner.setValueLabel("");
+        winner.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);
+        winner.setColor(0);
+        winner.setFont(GetFont.getFont("Montserrat.ttf", 30, pApplet));
+    }
+
+    public void hideWinner() {
+        playerList.hide();
+    }
+
+    public void showWinner(String theWinner) {
+        playerList.show();
+        winner.setValueLabel(theWinner + " is the winner!");
     }
 }

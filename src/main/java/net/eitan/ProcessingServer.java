@@ -144,6 +144,11 @@ public class ProcessingServer extends PApplet {
                 String username = incoming.split(", ")[1];
                 server.write("SubmitTopic, " + username + ", " + topic);
             }
+            if (incoming != null && incoming.split("- ").length > 1 && incoming.split("- ")[0].equals("Winner")) {
+                server.write("Winner- " + incoming.split("- ")[1]);
+                currentJudge = null;
+                topic = null;
+            }
         }
         if (playingGame) {
             gameSystem();
@@ -152,7 +157,7 @@ public class ProcessingServer extends PApplet {
 
     private void gameSystem() {
         if (currentJudge == null) {
-            delay(100);
+            delay(3000);
             currentJudge = users.get((int) Math.floor(Math.random() * users.size()));
             server.write("Judge, " + currentJudge.username);
         }
