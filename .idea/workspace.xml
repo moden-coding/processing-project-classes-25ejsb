@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dab40b80-54a3-4fdc-98e5-f11c5bf6d53e" name="Changes" comment="lol">
-      <change beforePath="$PROJECT_DIR$/lib/controlP5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/components/StartButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/components/types/Button.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/component/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/component/GameScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,14 +34,65 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.App2.executor": "Run",
     "Application.ProcessingServer.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/eitan/Downloads/vscode-theme-1.11.0.zip",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
+  <component name="RunManager" selected="Application.App2">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.net.eitan.App" />
+      <module name="processing-project-classes-25ejsb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.net.eitan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.java.net.eitan.App" />
+      <module name="processing-project-classes-25ejsb" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProcessingServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.net.eitan.ProcessingServer" />
+      <module name="processing-project-classes-25ejsb" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.net.eitan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.App2" />
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.ProcessingServer" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.ProcessingServer" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

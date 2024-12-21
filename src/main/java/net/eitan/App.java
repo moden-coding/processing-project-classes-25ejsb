@@ -33,6 +33,7 @@ public class App extends PApplet {
             Menu.drawMenu(this);
         }
         gameScreen.initializeJudge(this);
+        gameScreen.hideJudge();
 
         gameScreen.initializeAnswerScreen(this);
         gameScreen.hideAnswerScreen();
@@ -113,6 +114,7 @@ public class App extends PApplet {
                 }
             }
             if (message.equals("ServerStart")) {
+                gameScreen.hideWinner();
                 gameScreen.hideLoadingScreen(this);
             }
             if (message.split(", ").length > 1 && message.split(", ")[0].equals("Judge")) {
@@ -149,7 +151,9 @@ public class App extends PApplet {
             }
             if (message.split("- ").length == 2 && message.split("- ")[0].equals("Winner")) {
                 gameScreen.showWinner(message.split("- ")[1]);
-                currentlyJudge = false;
+                gameScreen.hideTopicLabel();
+                gameScreen.hidePlayerResponses();
+
             }
         }
         background(255);

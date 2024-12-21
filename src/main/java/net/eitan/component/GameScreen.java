@@ -59,7 +59,12 @@ public class GameScreen {
         judge.setValueLabel("");
     }
 
+    public void hideJudge() {
+        judge.hide();
+    }
+
     public void setJudge(String newjudge, PApplet pApplet) {
+        judge.show();
         judge.setValueLabel(newjudge + " is the judge!");
     }
 
@@ -253,11 +258,12 @@ public class GameScreen {
     }
 
     public void hideWinner() {
-        playerList.hide();
+        winner.hide();
     }
 
     public void showWinner(String theWinner) {
-        playerList.show();
-        winner.setValueLabel(theWinner + " is the winner!");
+        hideJudge();
+        winner.show();
+        winner.setValueLabel(theWinner.split("> ")[1] + " is the winner!");
     }
 }

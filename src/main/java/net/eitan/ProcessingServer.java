@@ -60,6 +60,7 @@ public class ProcessingServer extends PApplet {
         minPlayersLabel.setValueLabel("Min Players: " + minPlayers);
 
         startButton = controlP5.addButton("Start");
+        startButton.setValueLabel("Start Round");
         startButton.setSize(200, 75);
         startButton.setPosition((screenWidth/2)-100, screenHeight/2-37.5f);
         controlP5.getController("Start").getCaptionLabel().setFont(GetFont.getFont("Montserrat.ttf", 20, this));
@@ -72,9 +73,10 @@ public class ProcessingServer extends PApplet {
 
     public void controlEvent(ControlEvent event) {
         if (event.isAssignableFrom(Button.class)) {
-            if (event.getName() == "Start") {
+            if (event.getName().equals("Start")) {
                 if (users.size() >= minPlayers) {
                     server.write("ServerStart");
+                    chooseJudge();
                     startButton.hide();
                     playingGame = true;
                 }
@@ -148,18 +150,15 @@ public class ProcessingServer extends PApplet {
                 server.write("Winner- " + incoming.split("- ")[1]);
                 currentJudge = null;
                 topic = null;
+                startButton.show();
+                answers.removeAll(answers);
             }
-        }
-        if (playingGame) {
-            gameSystem();
         }
     }
 
-    private void gameSystem() {
-        if (currentJudge == null) {
-            delay(3000);
-            currentJudge = users.get((int) Math.floor(Math.random() * users.size()));
-            server.write("Judge, " + currentJudge.username);
-        }
+    private void chooseJudge() {
+        currentJudge = users.get((int) Math.floor(Math.random() * users.size()));
+        delay(20+users.size());
+        server.write("Judge, " + currentJudge.username);
     }
 }
