@@ -59,7 +59,7 @@ public class App extends PApplet {
         gameScreen.initializeWinner(this);
         gameScreen.hideWinner();
 
-        client = new Client(this, "127.0.0.1", 3000);
+        client = new Client(this, "192.168.1.204", 3000);
     }
 
     @Override
