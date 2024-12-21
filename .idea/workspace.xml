@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dab40b80-54a3-4fdc-98e5-f11c5bf6d53e" name="Changes" comment="final" />
+    <list default="true" id="dab40b80-54a3-4fdc-98e5-f11c5bf6d53e" name="Changes" comment="final">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/processing-project-classes-25ejsb/main/java/net/eitan/ProcessingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/eitan/ProcessingServer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,21 +28,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.App2.executor": "Run",
-    "Application.ProcessingServer.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/eitan/Downloads/vscode-theme-1.11.0.zip",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.App2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProcessingServer.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eitan/Downloads/vscode-theme-1.11.0.zip&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.App2">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.net.eitan.App" />
@@ -116,8 +122,27 @@
       <option name="project" value="LOCAL" />
       <updated>1734791619640</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="final">
+      <option name="closed" value="true" />
+      <created>1734791665875</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734791665875</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lol" />

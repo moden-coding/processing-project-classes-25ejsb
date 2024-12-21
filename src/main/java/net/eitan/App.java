@@ -59,7 +59,7 @@ public class App extends PApplet {
         gameScreen.initializeWinner(this);
         gameScreen.hideWinner();
 
-        client = new Client(this, "127.0.0.1", 3000);
+        client = new Client(this, "192.168.1.204", 3000);
     }
 
     @Override
@@ -116,6 +116,7 @@ public class App extends PApplet {
             if (message.equals("ServerStart")) {
                 gameScreen.hideWinner();
                 gameScreen.hideLoadingScreen(this);
+                currentlyJudge = false;
             }
             if (message.split(", ").length > 1 && message.split(", ")[0].equals("Judge")) {
                 gameScreen.hideLoadingScreen(this);
@@ -153,7 +154,6 @@ public class App extends PApplet {
                 gameScreen.showWinner(message.split("- ")[1]);
                 gameScreen.hideTopicLabel();
                 gameScreen.hidePlayerResponses();
-
             }
         }
         background(255);
