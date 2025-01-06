@@ -5,6 +5,8 @@ import processing.core.*;
 import processing.net.Client;
 import java.awt.Font;
 
+import org.apache.commons.lang3.StringUtils;
+
 import main.java.net.eitan.component.PlayerList;
 import main.java.net.eitan.component.GameScreen;
 import main.java.net.eitan.component.Menu;
@@ -70,7 +72,7 @@ public class App extends PApplet {
     public void controlEvent(ControlEvent event) {
         if (event.isAssignableFrom(Button.class)) {
             if (event.getName() == "UserSubmit") {
-                if (Menu.textField.getText().length() < 10 && Menu.textField.getText().length() > 0) {
+                if (Menu.textField.getText().length() < 10 && Menu.textField.getText().length() > 0 && StringUtils.isAlphanumeric(Menu.textField.getText())) {
                     client.write("Username: " + Menu.textField.getText());
                     username = Menu.textField.getText();
                     inMenu = false;

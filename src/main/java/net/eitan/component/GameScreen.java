@@ -163,7 +163,7 @@ public class GameScreen {
     public void listOutPlayerResponses(PApplet pApplet) {
         
         playerList = App.controlP5.addLabel("PlayerResponses");
-        playerList.setPosition(415, 300);
+        playerList.setPosition(415, 250);
         playerList.setSize(500, 500);
         playerList.setValueLabel("");
         playerList.getValueLabel().align(App.controlP5.CENTER, App.controlP5.CENTER);

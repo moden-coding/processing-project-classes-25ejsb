@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/lib/core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/net.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/controlP5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.17.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
