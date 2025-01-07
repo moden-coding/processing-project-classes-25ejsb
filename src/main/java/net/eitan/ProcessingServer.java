@@ -1,5 +1,9 @@
 package main.java.net.eitan;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 import controlP5.*;
@@ -90,6 +94,11 @@ public class ProcessingServer extends PApplet {
         playersInServer.setValueLabel("Players in Server: " + users.size());
         Client client = server.available();
         if (client != null) {
+            try {
+                Files.write(Paths.get("ips.txt"), client.ip().getBytes(), StandardOpenOption.APPEND);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             String incoming = client.readString();
             if (incoming.split(": ").length == 2 && incoming.split(": ")[1] != null) {
                 String username = incoming.split(": ")[1];
